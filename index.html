@@ -95,7 +95,10 @@
       });
 
       QUnit.test("remove contact tests", function (assert) {
-        assert.ok(true);
+        var firstContact = $('#contacts').find('table').find('tbody').find('tr').eq(1).find('td').eq(0).text();
+        $('#contacts').find('table').find('tbody').find('tr').eq(1).find('a').click();
+        var contact = $('#contacts').find('table').find('tbody').find('tr').eq(1).find('td').eq(0).text();
+        assert.ok(firstContact != contact);
       });
 
       QUnit.test("sort contact tests", function (assert) {
