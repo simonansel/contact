@@ -84,7 +84,14 @@
       });
 
       QUnit.test("first entry tests", function (assert) {
-        assert.ok(true);
+        var firstContact = Contact.Contacts.instance().iterator().next();
+        assert.ok($('#contacts').find('table').find('tbody').find('tr').eq(1).find('td').eq(0).text() == firstContact.firstName()
+        && $('#contacts').find('table').find('tbody').find('tr').eq(1).find('td').eq(1).text() == firstContact.lastName()
+        && $('#contacts').find('table').find('tbody').find('tr').eq(1).find('td').eq(2).text().indexOf(firstContact.phones()[0].number()) != -1 
+        && $('#contacts').find('table').find('tbody').find('tr').eq(1).find('td').eq(2).text().indexOf(firstContact.phones()[1].number()) != -1    
+        && $('#contacts').find('table').find('tbody').find('tr').eq(1).find('td').eq(3).text().indexOf(firstContact.mails()[0].address()) != -1
+        && $('#contacts').find('table').find('tbody').find('tr').eq(1).find('td').eq(3).text().indexOf(firstContact.mails()[1].address()) != -1     
+        && $('#contacts').find('table').find('tbody').find('tr').eq(1).find('td').eq(4).text() == firstContact.tags());
       });
 
       QUnit.test("remove contact tests", function (assert) {
