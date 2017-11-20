@@ -102,7 +102,17 @@
       });
 
       QUnit.test("sort contact tests", function (assert) {
-        assert.ok(true);
+        var contactList = Contact.Contacts.instance().iterator();
+        var contactLastNames = [];
+        while(contactList.hasNext()) {
+          var contact = contactList.next();
+          contactLastNames.push(contact.lastName());
+        }
+        contactLastNames.sort();
+        for(var i = 1 ; i < $('#contacts').find('table').find('tbody').find('tr').length - 1 ; i++ ){
+          $('#button_sort').click();
+          assert.ok($('#contacts').find('table').find('tbody').find('tr').eq(i).find('#cellLastName').text() == contactLastNames[i-1]);
+        }   
       });
     </script>
     <!-- END - Les tests -->
