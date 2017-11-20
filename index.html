@@ -95,9 +95,9 @@
       });
 
       QUnit.test("remove contact tests", function (assert) {
-        var firstContact = $('#contacts').find('table').find('tbody').find('tr').eq(1).find('td').eq(0).text();
+        var firstContact = $('#contacts').find('table').find('tbody').find('tr').eq(1).attr('id');
         $('#contacts').find('table').find('tbody').find('tr').eq(1).find('a').click();
-        var contact = $('#contacts').find('table').find('tbody').find('tr').eq(1).find('td').eq(0).text();
+        var contact = $('#contacts').find('table').find('tbody').find('tr').eq(1).attr('id');
         assert.ok(firstContact != contact);
       });
 
